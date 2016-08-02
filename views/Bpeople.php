@@ -39,7 +39,7 @@
                 <?php } ?>
                 
             </table>
-            <form action="/Activity/B_people/newPeople" method="post">
+            <form action="/Activity/back_con/newPeople" method="post">
                 <div class="w-100">
                     <label for="">員工編號</label>
                     <input type="text" name="Snumber"/>

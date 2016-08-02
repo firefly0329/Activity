@@ -28,22 +28,22 @@ class activity_model{
         return $result;
     }
     
-    function setActivity(){
+    function setActivity($Aname,$startTime,$endTime,$numberUpper,$together,$content){
         $pdo = new dbPDO;
         $pdoLink = $pdo->linkConnection();
-        
-        $grammer = "INSERT INTO `activity`(`Aname`, `startTime`, `endTime`, `numberUpper`, `together`, `content`) 
-        VALUES (:Aname,:startTime,:endTime,:numberUpper,:together,:content)";
+        echo $startTime;
+        $grammer = "INSERT INTO `activity`(`Aname`, `startTime`, `endTime`, `numberUpper`, `Atogether`, `content`) 
+        VALUES (:Aname, :startTime, :endTime, :numberUpper, :together, :content)";
         $prepare = $pdoLink->prepare($grammer);
-        $prepare->bindParam(':Aname', $_POST['Aname']);
-        $prepare->bindParam(':startTime', $_POST['startTime']);
-        $prepare->bindParam(':endTime', $_POST['endTime']);
-        $prepare->bindParam(':numberUpper', $_POST['numberUpper']);
-        $prepare->bindParam(':together', $_POST['together']);
-        $prepare->bindParam(':content', $_POST['content']);
-        $result = $prepare->execute();
-        // $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
-    
+        $prepare->bindParam(':Aname', $Aname);
+        $prepare->bindParam(':startTime', $startTime);
+        $prepare->bindParam(':endTime', $endTime);
+        $prepare->bindParam(':numberUpper', $numberUpper);
+        $prepare->bindParam(':together', $together);
+        $prepare->bindParam(':content', $content);
+        $prepare->execute();
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        // var_dump($result);
         $pdo->closeConnection();
         return $result;
     } 

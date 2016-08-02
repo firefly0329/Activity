@@ -35,12 +35,16 @@
                     <td><?php echo $data2['numberUpper']; ?></td>
                     <td><?php echo $data2['together']; ?></td>
                     <td>
-                        <form method="post">
-                            <button type="submit" value="<?php echo $data2['Aid']; ?>" name="linkBpeopleBTN">詳細資料</button>
+                        <form method="post" action="/Activity/back_con/linkBpeople">
+                            <input type="hidden" value="<?php echo $data2['Aid']; ?>" name="Aid">
+                            <button type="submit" value="" name="linkBpeopleBTN">詳細資料</button>
                         </form>
                     </td>
                 </tr>
                 <?php } ?>
+                <form method="post" action="/Activity/back_con/linkSetupActivit">
+                    <button type="submit" value="" name="linkSetupActivitBTN">新增活動</button>
+                </form>
                 
             </table>
         </div>

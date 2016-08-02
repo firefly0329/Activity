@@ -14,7 +14,7 @@
     </head>
     <body>
         <div id="wrapper">
-            <form method="post">
+            <form method="post" action="/Activity/back_con/newActivity">
                 <div class="w-100">
                     <label for="">活動名稱</label>
                     <input type="text" name="Aname"/>
@@ -34,8 +34,8 @@
                 <div class="w-100">
                 <label for="">可否攜伴</label>
                     <select name="together" id="">
-                        <option value="1">可</option>
-                        <option value="0">否</option>
+                        <option value="可">可</option>
+                        <option value="否">否</option>
                     </select>
                 </div>
                 <div class="w-100">
@@ -43,7 +43,7 @@
                     <textarea name="content" maxlength="5000"></textarea>
                 </div>
                 <div class="w-100">
-                    <input type="submit" value="新增活動" name="submit"/>
+                    <input type="submit" value="新增活動" name="newActivityBTN"/>
                 </div>
             </form>
         </div>

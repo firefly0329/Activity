@@ -1,4 +1,5 @@
 <?php 
+header("Content-Type:text/html; charset=utf-8");
 class back_con extends Controller{
     
     function BactivityList(){
@@ -20,22 +21,47 @@ class back_con extends Controller{
         $this->view("Bpeople",Array($activity,$signUp,$Aid));
     }
     
-    
-    function linkActivityBTN(){
-        if(isset($_POST['linkActivityBTN'])){
-            $this->Bpeople($_POST['linkActivityBTN']);
-        }
-        
-        
+    //===============活動清單==============
+    //詳細資料
+    function linkBpeople(){
+        if(isset($_POST['linkBpeopleBTN'])){
+            $this->Bpeople($_POST['Aid']);
+        } 
+    }
+    //新增活動
+    function linkSetupActivit(){
+        if(isset($_POST['linkSetupActivitBTN'])){
+            // $this->BsetupActivity();
+            header("location: /Activity/back_con/BsetupActivity");
+        } 
     }
     
+    //===============新增人員==================
     function newPeople(){
         $mypModel = $this->model("signUp_model");
         if(isset($_POST['newPeople'])){
-            $mypModel->setSignUp($_POST['Aid']);
+            $mypModel->setSignUp($_POST['Snumber'],$_POST['Sname'],$_POST['Aid']);
+            $this->Bpeople($_POST['Aid']);
         }
-        $this->Bpeople($_POST['Aid']);
+        
     }
+    //===============新增活動===================
+    function newActivity(){
+        $mypModel = $this->model("activity_model");
+        if(isset($_POST['newActivityBTN'])){
+            // echo $_POST['together'];
+            $mypModel->setActivity($_POST['Aname'],$_POST['startTime'],$_POST['endTime']
+            ,$_POST['numberUpper'],$_POST['together'],$_POST['content']);
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
     
     // function addEmp(){
     //     $mypdo = $this->model("B_people_model");
