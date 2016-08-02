@@ -9,7 +9,7 @@ class App {
             header("location:/Activity/F_activityList/mainProgarm");
         }
         
-        $controllerName = "{$url[0]}_con";
+        $controllerName = $url[0];
         
         require_once "controllers/$controllerName.php";
         $controller = new $controllerName;

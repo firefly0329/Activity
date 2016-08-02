@@ -1,12 +1,12 @@
 <?php 
 
-class db2{
+class dbPDO{
     private static $connection = null;
     function __construct(){
-        $db2 = new PDO("mysql:host=localhost;dbname=recipe;port=3306", "root", "");
-        $db2->exec("SET CHARACTER SET utf8");
-        self::$connection = $db2;
-        $db2 = null;
+        $db = new PDO("mysql:host=localhost;dbname=Activity;port=3306", "root", "");
+        $db->exec("SET CHARACTER SET utf8");
+        self::$connection = $db;
+        $db = null;
     }
     function linkConnection(){
         return self::$connection;
@@ -18,7 +18,7 @@ class db2{
 }
 /*使用此class的範例
 function getMessage($menuId){
-    $pdo = new db2;
+    $pdo = new dbPDO;
     $pdoLink = $pdo->linkConnection();
     
     $grammer = "select * from message where menuId like :menuId order by time desc";

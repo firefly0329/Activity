@@ -2,7 +2,7 @@
 
 class Controller {
     public function model($model) {
-        require_once "pdo.php";
+        require_once "dbPDO.php";
         require_once "../Activity/models/$model.php";
         $obj = new $model();
         return $obj; //new出一個物件，並把這個物件的指標丟出來(等於把物件丟出來)
