@@ -1,0 +1,15 @@
+#wrapper{
+   padding: 5%; 
+}
+.activity{
+    width: 60vw;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2%; 
+}
+form{
+    width: 100%;
+}
+.w-100{
+    text-align: center;
+}

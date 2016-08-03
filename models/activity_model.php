@@ -22,7 +22,7 @@ class activity_model{
         $prepare = $pdoLink->prepare($grammer);
         $prepare->bindParam(':Aid', $Aid);
         $prepare->execute();
-        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+        $result = $prepare->fetch(PDO::FETCH_ASSOC);
     
         $pdo->closeConnection();
         return $result;

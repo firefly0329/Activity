@@ -28,10 +28,42 @@ class signUp_model{
         // $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
     
         $pdo->closeConnection();
-        // echo $grammer;
-        // echo "Snumber" . $_POST['Snumber'];
-        // echo "Sname" . $_POST['Sname'];
-        // echo "Aid" . $Aid;
+        // echo $result;
+        return $result;
+    }
+    function getOnceSignUp($Aid,$Snumber,$Sname){
+        $pdo = new dbPDO;
+        $pdoLink = $pdo->linkConnection();
+        
+        $grammer = "SELECT * FROM  `signUp` WHERE 
+        `Aid` LIKE :Aid AND `Snumber` LIKE :Snumber AND `Sname` LIKE :Sname";
+        $prepare = $pdoLink->prepare($grammer);
+        $prepare->bindParam(':Aid', $Aid);
+        $prepare->bindParam(':Snumber', $Snumber);
+        $prepare->bindParam(':Sname', $Sname);
+        $prepare->execute();
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+    
+        $pdo->closeConnection();
+        return $result;
+    }
+    function updateSignUp($Snumber,$Sname,$Aid,$togethe,$Sid){
+        $pdo = new dbPDO;
+        $pdoLink = $pdo->linkConnection();
+        
+        $grammer = "UPDATE `signUp` SET `Snumber`=:Snumber,`Sname`=:Sname,`Aid`=:Aid
+        ,`sign`=1,`together`=:together WHERE `Sid` LIKE :Sid";
+        $prepare = $pdoLink->prepare($grammer);
+        $prepare->bindParam(':Snumber', $Snumber);
+        $prepare->bindParam(':Sname', $Sname);
+        $prepare->bindParam(':Aid', $Aid);
+        $prepare->bindParam(':together', $together);
+        $prepare->bindParam(':Sid', $Sid);
+        $result = $prepare->execute();
+        // $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+    
+        $pdo->closeConnection();
+        // echo $result;
         return $result;
     }
     

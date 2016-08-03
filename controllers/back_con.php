@@ -3,8 +3,8 @@ header("Content-Type:text/html; charset=utf-8");
 class back_con extends Controller{
     
     function BactivityList(){
-        $mypModel = $this->model("activity_model");
-        $activity = $mypModel->getActivity();
+        $activityModel = $this->model("activity_model");
+        $activity = $activityModel->getActivity();
         $this->view("BactivityList",$activity);
     }
     function BsetupActivity(){
@@ -16,12 +16,12 @@ class back_con extends Controller{
         $activityModel = $this->model("activity_model");
         $signUpModel = $this->model("signUp_model");
         
-        $activity = $activityModel->getActivity($Aid);
+        $activity = $activityModel->getOnceActivity($Aid);
         $signUp = $signUpModel->getSignUp($Aid);
         $this->view("Bpeople",Array($activity,$signUp,$Aid));
     }
     
-    //===============活動清單==============
+    //===============B活動清單==============
     //詳細資料
     function linkBpeople(){
         if(isset($_POST['linkBpeopleBTN'])){
@@ -36,7 +36,7 @@ class back_con extends Controller{
         } 
     }
     
-    //===============新增人員==================
+    //===============B新增員工==================
     function newPeople(){
         $mypModel = $this->model("signUp_model");
         if(isset($_POST['newPeople'])){
@@ -45,7 +45,7 @@ class back_con extends Controller{
         }
         
     }
-    //===============新增活動===================
+    //===============B新增活動===================
     function newActivity(){
         $mypModel = $this->model("activity_model");
         if(isset($_POST['newActivityBTN'])){
