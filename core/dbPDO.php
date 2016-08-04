@@ -3,7 +3,7 @@
 class dbPDO{
     private static $connection = null;
     function __construct(){
-        $db = new PDO("mysql:host=localhost;dbname=Activity;port=3306", "root", "");
+        $db = new PDO("mysql:host=localhost;dbname=Activity;port=3306", "firefly0329", "");
         $db->exec("SET CHARACTER SET utf8");
         self::$connection = $db;
         $db = null;
@@ -15,21 +15,63 @@ class dbPDO{
         self::$connection = null;
     }
     
-}
-/*使用此class的範例
-function getMessage($menuId){
-    $pdo = new dbPDO;
-    $pdoLink = $pdo->linkConnection();
-    
-    $grammer = "select * from message where menuId like :menuId order by time desc";
-    $prepare = $pdoLink->prepare($grammer);
-    $prepare->bindParam(':menuId', $menuId);
-    $prepare->execute();
-    $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
+    function selectAll($grammer,$paramArray){
+        $pdoLink = self::$connection;
+        
+        $prepare = $pdoLink->prepare($grammer);
+        $prepare->execute($paramArray);
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
-    $pdo->closeConnection();
-    return $result;
+        self::$connection = null;
+        return $result;
+    }
+    function selectOnce($grammer,$paramArray){
+        $pdoLink = self::$connection;
+        
+        $prepare = $pdoLink->prepare($grammer);
+        $prepare->execute($paramArray);
+        $result = $prepare->fetch(PDO::FETCH_ASSOC);
+
+        self::$connection = null;
+        return $result;
+    }
+    function change($grammer,$paramArray){
+        $pdoLink = self::$connection;
+        // $pdoLink->exec('LOCK TABLES `activity` READ , `signUp` READ');
+        
+        $prepare = $pdoLink->prepare($grammer);
+        $result = $prepare->execute($paramArray);
+
+        // $pdoLink->exec('UNLOCK TABLES');
+        self::$connection = null;
+        return $result;
+    }
+    // function update($grammer,$paramArray){
+    //     $pdoLink = self::$connection;
+    //     $pdoLink->exec('LOCK TABLES `activity` READ , `signUp` READ');
+        
+    //     $prepare = $pdoLink->prepare($grammer);
+    //     $result = $prepare->execute($paramArray);
+
+    //     $pdoLink->exec('UNLOCK TABLES');
+    //     self::$connection = null;
+    //     return $result;
+    // }
 }
+
+
+
+/*使用此class的範例
+
+function getOnceActivity($Aid){
+        $pdo = new dbPDO;
+
+        $grammer = "SELECT * FROM  `activity` WHERE `Aid` = :Aid";
+        $paramArray = array(':Aid' => $Aid);
+        $result = $pdo->selectOnce($grammer, $paramArray);
+        
+        return $result;
+    }
 
 */
 

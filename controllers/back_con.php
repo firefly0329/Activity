@@ -52,6 +52,7 @@ class back_con extends Controller{
             // echo $_POST['together'];
             $mypModel->setActivity($_POST['Aname'],$_POST['startTime'],$_POST['endTime']
             ,$_POST['numberUpper'],$_POST['together'],$_POST['content']);
+            $this->BactivityList();
         }
         
         
@@ -60,17 +61,7 @@ class back_con extends Controller{
     
     
     
-    
-    
-    
-    // function addEmp(){
-    //     $mypdo = $this->model("B_people_model");
-    //     $Aid = $_POST['Aid'];
-    //     if(isset($_POST['submit'])){
-    //         $mypdo->decision($Aid);
-    //     }
-    //     $this->mainProgarm($Aid);
-    // }
+
     
     
 }

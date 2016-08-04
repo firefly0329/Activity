@@ -34,15 +34,15 @@
             <div class="pd-t-3">
                 <form action="/Activity/front_con/signUp" method="post" class="">
                     <div class="w-100">
-                        <label for="">員工編號</label>
+                        <label for="">員工編號：</label>
                         <input type="text" name="Snumber" pattern="[0-9]{3,20}"/>
                     </div>
                     <div class="w-100">
-                        <label for="">員工名稱</label>
+                        <label for="">員工名稱：</label>
                         <input type="text" name="Sname"/>
                     </div>
                     <div class="w-100">
-                        <label for="">攜伴人數</label>
+                        <label for="">攜伴人數：</label>
                         <input type="text" name="together"/>
                     </div>
                     <div class="w-100">

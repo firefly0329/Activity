@@ -7,24 +7,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>sakamoto_activity</title>
-        <link rel="stylesheet" type="text/css" href="css/firefly_frame.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="css/UI.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="css/FactivityList.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="css/table.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/Activity/views/css/firefly_frame.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/Activity/views/css/UI.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/Activity/views/css/FactivityList.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/Activity/views/css/table.css" media="screen">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-        <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+        <script type="/Activity/views/text/javascript" src="js/jquery-1.11.3.min.js"></script>
     </head>
     <body>
         <div id="wrapper">
             <table>
                 <tr>
-                    <td>活動名稱</td>
-                    <td>報名開始時間</td>
-                    <td>報名截止時間</td>
-                    <td>報名人數</td>
-                    <td>上數上限</td>
-                    <td>是否可攜伴</td>
-                    <td></td>
+                    <th>活動名稱</th>
+                    <th>報名開始時間</th>
+                    <th>報名截止時間</th>
+                    <th>報名人數</th>
+                    <th>上數上限</th>
+                    <th>是否可攜伴</th>
+                    <th></th>
                 </tr>
                 <?php foreach($data as $data2){ ?>
                 <tr>

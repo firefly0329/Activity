@@ -19,13 +19,13 @@
             <h1 class="pd-t-1 pd-b-1 ta-c">活動清單</h1>
             <table class="margin-center">
                 <tr>
-                    <td>活動名稱</td>
-                    <td>報名開始時間</td>
-                    <td>報名截止時間</td>
-                    <td>報名人數</td>
-                    <td>上數上限</td>
-                    <td>是否可攜伴</td>
-                    <td></td>
+                    <th>活動名稱</th>
+                    <th>報名開始時間</th>
+                    <th>報名截止時間</th>
+                    <th>報名人數</th>
+                    <th>上數上限</th>
+                    <th>是否可攜伴</th>
+                    <th></th>
                 </tr>
                 <?php foreach($data as $data2){ ?>
                 <tr>

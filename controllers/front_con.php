@@ -30,6 +30,7 @@ class front_con extends Controller{
             $activityModel = $this->model("activity_model");
             //輸入活動ID.員工編號.員工名稱 取出指定的某筆資料的Sid
             $sid_sign = $signUpModel->getOnceSignUp($_POST['Aid'],$_POST['Snumber'],$_POST['Sname']);
+            // var_dump($sid_sign);
             if($sid_sign['sign'] == 1){
                 $this->FsignUp($_POST['Aid'],"請勿重複報名!!!!");
             }else if($sid_sign['Sid'] == NULL){
@@ -40,7 +41,7 @@ class front_con extends Controller{
                 //讀取(單筆)參加人數
                 $OrderNumber = $activityModel->getOnceNumber($_POST['Aid']);
                 //修改參加人數
-                $activity = $activityModel->updateAtoghther($_POST['Aid'],$_POST['together'],$OrderNumber);
+                $activity = $activityModel->updateAtoghther($_POST['Aid'],$_POST['together'],$OrderNumber['number']);
                 
             }
             
