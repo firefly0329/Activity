@@ -43,7 +43,7 @@
                     </div>
                     <div class="w-100">
                         <label for="">攜伴人數：</label>
-                        <input type="text" name="together"/>
+                        <input type="number" name="together" min="0" max="10" style=""/>
                     </div>
                     <div class="w-100">
                         <input type="hidden" name="Aid" value="<?php echo $data[2]; ?>">

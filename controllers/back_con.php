@@ -53,9 +53,14 @@ class back_con extends Controller{
             $mypModel->setActivity($_POST['Aname'],$_POST['startTime'],$_POST['endTime']
             ,$_POST['numberUpper'],$_POST['together'],$_POST['content']);
             $this->BactivityList();
-        }
-        
-        
+        }     
+    }
+    //==============AJAX即時更新人數=================
+    function ajaxGetNumber($Aid){
+        $mypModel = $this->model("activity_model");
+        $result = $mypModel->getOnceNumber($Aid);
+        // echo $result['number'];
+        $this->view("ajaxEcho",$result['number']);
     }
     
     

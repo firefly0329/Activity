@@ -38,21 +38,6 @@ class activity_model{
     }
     
     //抓(單筆)參加人數
-    // function getOnceNumber($Aid){
-    //     $pdo = new dbPDO;
-    //     $pdoLink = $pdo->linkConnection();
-        
-    //     $grammer = "SELECT `number` FROM  `activity` WHERE `Aid` = :Aid";
-    //     $prepare = $pdoLink->prepare($grammer);
-    //     $prepare->bindParam(':Aid', $Aid);
-    //     $prepare->execute();
-    //     $result = $orderNumber = $prepare->fetch(PDO::FETCH_ASSOC);
-        
-    
-    //     $pdo->closeConnection();
-    //     // echo $result;
-    //     return $result['number'];
-    // }
     function getOnceNumber($Aid){
         $pdo = new dbPDO;
 
@@ -64,20 +49,6 @@ class activity_model{
     }
     
     //修改參加人數
-    // function updateAtoghther($Aid,$toghtherADD,$OrderNumber){
-    //     $pdo = new dbPDO;
-    //     $pdoLink = $pdo->linkConnection();
-        
-    //     $newNumber = $OrderNumber - ($toghtherADD + 1);
-    //     $grammer = "UPDATE `activity` SET `number` = :number WHERE `Aid` = :Aid";
-    //     $prepare = $pdoLink->prepare($grammer);
-    //     $prepare->bindParam(':number', $newNumber);
-    //     $prepare->bindParam(':Aid', $Aid);
-    //     $result = $prepare->execute();
-    
-    //     $pdo->closeConnection();
-    //     return $result;
-    // }
     function updateAtoghther($Aid,$toghtherADD,$OrderNumber){
         $pdo = new dbPDO;
         

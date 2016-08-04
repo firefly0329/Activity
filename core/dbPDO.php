@@ -37,26 +37,16 @@ class dbPDO{
     }
     function change($grammer,$paramArray){
         $pdoLink = self::$connection;
-        // $pdoLink->exec('LOCK TABLES `activity` READ , `signUp` READ');
+        $pdoLink->exec('LOCK TABLES `activity` WRITE , `signUp` WRITE');
         
         $prepare = $pdoLink->prepare($grammer);
         $result = $prepare->execute($paramArray);
 
-        // $pdoLink->exec('UNLOCK TABLES');
+        $pdoLink->exec('UNLOCK TABLES');
         self::$connection = null;
         return $result;
     }
-    // function update($grammer,$paramArray){
-    //     $pdoLink = self::$connection;
-    //     $pdoLink->exec('LOCK TABLES `activity` READ , `signUp` READ');
-        
-    //     $prepare = $pdoLink->prepare($grammer);
-    //     $result = $prepare->execute($paramArray);
 
-    //     $pdoLink->exec('UNLOCK TABLES');
-    //     self::$connection = null;
-    //     return $result;
-    // }
 }
 
 
