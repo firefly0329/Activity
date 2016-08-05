@@ -22,7 +22,7 @@
                     <th>活動名稱</th>
                     <th>報名開始時間</th>
                     <th>報名截止時間</th>
-                    <th>報名人數</th>
+                    <!--<th>剩餘人數</th>-->
                     <th>上數上限</th>
                     <th>是否可攜伴</th>
                     <th></th>
@@ -32,7 +32,7 @@
                     <td><?php echo $data2['Aname']; ?></td>
                     <td><?php echo $data2['startTime']; ?></td>
                     <td><?php echo $data2['endTime']; ?></td>
-                    <td><?php echo $data2['number']; ?></td>
+                    <!--<td><?php echo $data2['number']; ?></td>-->
                     <td><?php echo $data2['numberUpper']; ?></td>
                     <td><?php echo $data2['Atogether']; ?></td>
                     <td>

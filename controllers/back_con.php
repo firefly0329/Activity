@@ -55,13 +55,20 @@ class back_con extends Controller{
             $this->BactivityList();
         }     
     }
-    //==============AJAX即時更新人數=================
+    //==============AJAX即時更新人數(單筆活動報名人數)=================
     function ajaxGetNumber($Aid){
         $mypModel = $this->model("activity_model");
         $result = $mypModel->getOnceNumber($Aid);
         // echo $result['number'];
         $this->view("ajaxEcho",$result['number']);
     }
+    //==============AJAX即時更新人數(多筆活動報名人數)=================
+    // function ajaxGetNumber($Aid){
+    //     $mypModel = $this->model("activity_model");
+    //     $result = $mypModel->getActivity($Aid);
+    //     // echo $result['number'];
+    //     $this->view("ajaxEcho",$result[]['number']);
+    // }
     
     
     

@@ -8,7 +8,7 @@ class front_con extends Controller{
         $this->view("FactivityList",$activity);
     }
     
-    function FsignUp($Aid,$message){
+    function FsignUp($Aid,$message = ""){
         $activityModel = $this->model("activity_model");
         $signUpModel = $this->model("signUp_model");
         

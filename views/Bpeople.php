@@ -21,7 +21,7 @@
                     <div class="">活動名稱：<?php echo $data[0]['Aname']; ?></div>
                     <div class="">報名開始時間：<?php echo $data[0]['startTime']; ?></div>
                     <div class="">報名截止時間：<?php echo $data[0]['endTime']; ?></div>
-                    <div class="">報名人數：<span id="changeNumber" style="color:red;"></span></div>
+                    <div class="">剩餘名額：<span id="changeNumber" style="color:red;"></span></div>
                     <div class="">上數上限：<?php echo $data[0]['numberUpper']; ?></div>
                     <div class="" id="changeNumber"></div>
                     <div class="">可否攜伴：<?php echo $data[0]['Atogether']; ?></div>
@@ -66,6 +66,12 @@
                     
                 </form>
             </div>
+            
+            <form class="fix" action="/Activity/back_con/BactivityList" method="post" class="">
+                <div class="w-100">
+                    <input type="submit" value="回上頁" name="newPeople"/>
+                </div>        
+            </form>
             
         </div>
         <script type="text/javascript" src="/Activity/views/js/jquery-1.11.3.min.js"></script>

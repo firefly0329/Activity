@@ -4,7 +4,7 @@ class activity_model{
     function getActivity(){
         $pdo = new dbPDO;
 
-        $grammer = "SELECT * FROM  `activity` ORDER BY `endTime` DESC";
+        $grammer = "SELECT * FROM  `activity`";
         $paramArray = array();
         $result = $pdo->selectAll($grammer,$paramArray);
         
@@ -18,14 +18,15 @@ class activity_model{
         $paramArray = array(':Aid' => $Aid);
         $result = $pdo->selectOnce($grammer, $paramArray);
         
+        $pdo->closeConnection();
         return $result;
     }
     //新增活動
     function setActivity($Aname,$startTime,$endTime,$numberUpper,$together,$content){
         $pdo = new dbPDO;
 
-        $grammer = "INSERT INTO `activity`(`Aname`, `startTime`, `endTime`, `numberUpper`, `Atogether`, `content`) 
-        VALUES (:Aname, :startTime, :endTime, :numberUpper, :together, :content)";
+        $grammer = "INSERT INTO `activity`(`Aname`, `startTime`, `endTime`, `numberUpper`, `Atogether`, `content`,`url`) 
+        VALUES (:Aname, :startTime, :endTime, :numberUpper, :together, :content, SUBSTRING( MD5( RAND() ) FROM 1 FOR 10 ) )";
         $paramArray = array(':Aname' => $Aname,
                             ':startTime' => $startTime,
                             ':endTime' => $endTime,
@@ -45,6 +46,7 @@ class activity_model{
         $paramArray = array(':Aid' => $Aid);
         $result = $pdo->selectOnce($grammer, $paramArray);
         
+        $pdo->closeConnection();
         return $result;
     }
     //抓(單筆)參加人數，並且updata參加人數(row lock)

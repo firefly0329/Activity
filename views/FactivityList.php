@@ -1,6 +1,6 @@
 <?php
-    // echo $data[1];
-    // var_dump($data);
+    date_default_timezone_set('Asia/Taipei');
+    $time = date("Y-m-d H:i:s");
 ?>
 
 <html>
@@ -36,10 +36,12 @@
                     <td><?php echo $data2['numberUpper']; ?></td>
                     <td><?php echo $data2['Atogether']; ?></td>
                     <td>
+                        <?php if($time >= $data2['startTime'] && $time <= $data2['endTime']): ?>
                         <form method="post" action="/Activity/front_con/linkFsignUp">
                             <input type="hidden" value="<?php echo $data2['Aid']; ?>" name="Aid">
                             <button type="submit" value="" name="linkFsignUpBTN">我要報名</button>
                         </form>
+                        <?php endif ?>
                     </td>
                 </tr>
                 <?php } ?>

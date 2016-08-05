@@ -13,3 +13,8 @@ form{
 .w-100{
     text-align: center;
 }
+.fix{
+    position: fixed;
+    top: 10%;
+    right: 0;
+}
