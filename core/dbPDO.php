@@ -32,18 +32,17 @@ class dbPDO{
         $prepare->execute($paramArray);
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
 
-        self::$connection = null;
+        // self::$connection = null;
         return $result;
     }
+    
     function change($grammer,$paramArray){
         $pdoLink = self::$connection;
-        $pdoLink->exec('LOCK TABLES `activity` WRITE , `signUp` WRITE');
         
         $prepare = $pdoLink->prepare($grammer);
         $result = $prepare->execute($paramArray);
 
-        $pdoLink->exec('UNLOCK TABLES');
-        self::$connection = null;
+        // self::$connection = null;
         return $result;
     }
 

@@ -16,7 +16,8 @@
     </head>
     <body>
         <div id="wrapper">
-            <table>
+            <h1 class="pd-t-1 pd-b-1 ta-c">活動清單</h1>
+            <table class="margin-center">
                 <tr>
                     <th>活動名稱</th>
                     <th>報名開始時間</th>

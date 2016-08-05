@@ -4,7 +4,7 @@ class activity_model{
     function getActivity(){
         $pdo = new dbPDO;
 
-        $grammer = "SELECT * FROM  `activity`";
+        $grammer = "SELECT * FROM  `activity` ORDER BY `endTime` DESC";
         $paramArray = array();
         $result = $pdo->selectAll($grammer,$paramArray);
         
@@ -47,6 +47,44 @@ class activity_model{
         
         return $result;
     }
+    //抓(單筆)參加人數，並且updata參加人數(row lock)
+    function getOnceNumberUpdate($Aid,$toghtherADD){
+        $pdo = new dbPDO;
+        try{
+            $pdo->linkConnection()->beginTransaction();
+            $grammer = "SELECT `number` FROM  `activity` WHERE `Aid` = :Aid FOR UPDATE";
+            $paramArray = array(':Aid' => $Aid);
+            $OrderNumber = $pdo->selectOnce($grammer, $paramArray);
+            // sleep(5);
+            // $pdo2 = new dbPDO;
+            $newNumber = $OrderNumber['number'] - ($toghtherADD + 1);
+            if($newNumber >= 0){
+                $grammer = "UPDATE `activity` SET `number` = :number WHERE `Aid` = :Aid";
+                $paramArray = array(':number' => $newNumber,
+                                    ':Aid' => $Aid);
+                $result = $pdo->change($grammer, $paramArray);
+                if($result > 0){
+                    $msg = "報名成功";
+                }else{
+                    throw new Exception("報名失敗");
+                }
+            }else{
+                throw new Exception("剩餘名額不足");
+            }
+            
+            $pdo->linkConnection()->commit();
+            
+        }catch(Exception $err){
+            
+            $pdo->linkConnection()->rollback();
+            $msg = $err->getMessage();
+            
+        }
+        $pdo->closeConnection();
+        return $msg;
+        
+
+    }
     
     //修改參加人數
     function updateAtoghther($Aid,$toghtherADD,$OrderNumber){
@@ -58,6 +96,7 @@ class activity_model{
                             ':Aid' => $Aid);
         $result = $pdo->change($grammer, $paramArray);
         
+        // $pdo->linkConnection()->commit();
         return $result;
     }
 }

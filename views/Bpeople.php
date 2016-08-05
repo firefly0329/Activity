@@ -70,20 +70,5 @@
         </div>
         <script type="text/javascript" src="/Activity/views/js/jquery-1.11.3.min.js"></script>
         <script type="text/javascript" src="/Activity/views/js/ajaxGetNumber.js"></script>
-        <script>
-            setInterval(function(){
-                Aid = $("#Aid").attr("value");
-                // alert(Aid);
-                $.ajax({
-                    url: "/Activity/back_con/ajaxGetNumber/" + Aid,
-                    type:"POST",
-                    success: function(data){
-                        // alert(data);
-                        $("#changeNumber").text(data);
-                    },
-                });
-            },1000);
-        </script>
-        
     </body>
 </html>

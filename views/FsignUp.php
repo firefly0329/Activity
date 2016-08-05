@@ -41,10 +41,12 @@
                         <label for="">員工名稱：</label>
                         <input type="text" name="Sname"/>
                     </div>
+                    <?php if($data[0]['Atogether'] == "可") : ?>
                     <div class="w-100">
                         <label for="">攜伴人數：</label>
                         <input type="number" name="together" min="0" max="10" style=""/>
                     </div>
+                    <?php endif ?>
                     <div class="w-100">
                         <input type="hidden" name="Aid" value="<?php echo $data[2]; ?>">
                         <input type="submit" value="活動報名" name="signUpBTN"/>
