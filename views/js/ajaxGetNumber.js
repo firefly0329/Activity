@@ -6,6 +6,8 @@ setInterval(function(){
         type:"POST",
         success: function(data){
             // alert(data);
+            data = JSON.parse(data);
+            // alert(data);
             $("#changeNumber").text(data);
         },
     });

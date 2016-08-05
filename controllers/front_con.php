@@ -17,6 +17,7 @@ class front_con extends Controller{
         $this->view("FsignUp",Array($activity,$signUp,$Aid,$message));
     }
     
+    
     //============F活動清單=============
     function linkFsignUp(){
         if(isset($_POST['linkFsignUpBTN'])){
