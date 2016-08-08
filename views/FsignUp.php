@@ -1,5 +1,12 @@
 <?php
-// echo $data[0]['Aid'];
+date_default_timezone_set('Asia/Taipei');
+    $time = date("Y-m-d H:i:s");
+    if($time >= $data[0]['startTime'] && $time <= $data[0]['endTime']){
+        
+    }else{
+        echo "<script>alert('現在不是報名期間');location.href='/Activity/front_con/FactivityList/';</script>";
+    }
+
 ?>
 
 <html>
