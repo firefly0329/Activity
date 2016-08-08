@@ -8,11 +8,19 @@ class dbPDO{
         self::$connection = $db;
         $db = null;
     }
-    function linkConnection(){
-        return self::$connection;
-    }
-    function closeConnection(){
+    function __destruct(){
         self::$connection = null;
+    }
+    
+    // function linkConnection(){
+    //     return self::$connection;
+    // }
+    // function closeConnection(){
+    //     self::$connection = null;
+    // }
+    function lastInsertId(){
+        return self::$connection->lastInsertId();
+        
     }
     
     function selectAll($grammer,$paramArray){
@@ -22,7 +30,6 @@ class dbPDO{
         $prepare->execute($paramArray);
         $result = $prepare->fetchAll(PDO::FETCH_ASSOC);
 
-        self::$connection = null;
         return $result;
     }
     function selectOnce($grammer,$paramArray){
@@ -32,7 +39,6 @@ class dbPDO{
         $prepare->execute($paramArray);
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
 
-        // self::$connection = null;
         return $result;
     }
     
@@ -42,7 +48,14 @@ class dbPDO{
         $prepare = $pdoLink->prepare($grammer);
         $result = $prepare->execute($paramArray);
 
-        // self::$connection = null;
+        return $result;
+    }
+    function update($grammer,$paramArray){
+        $pdoLink = self::$connection;
+        
+        $prepare = $pdoLink->prepare($grammer);
+        $result = $prepare->execute($paramArray);
+
         return $result;
     }
 

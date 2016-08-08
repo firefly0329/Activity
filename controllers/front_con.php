@@ -13,8 +13,17 @@ class front_con extends Controller{
         $signUpModel = $this->model("signUp_model");
         
         $activity = $activityModel->getOnceActivity($Aid);
-        $signUp = $signUpModel->getSignUp($Aid);
+        // $signUp = $signUpModel->getSignUp($Aid);
         $this->view("FsignUp",Array($activity,$signUp,$Aid,$message));
+    }
+    //
+    function FsignUpUrl($url,$message = ""){
+        $activityModel = $this->model("activity_model");
+        $signUpModel = $this->model("signUp_model");
+        
+        $activity = $activityModel->getOnceActivityUrl($url);
+        // $signUp = $signUpModel->getSignUp($Aid);
+        $this->view("FsignUp",Array($activity,$signUp,$url,$message));
     }
     
     
@@ -23,7 +32,6 @@ class front_con extends Controller{
         if(isset($_POST['linkFsignUpBTN'])){
             $this->FsignUp($_POST['Aid'],"");
         }
-        
     }
     //===========F活動報名================
     function signUp(){

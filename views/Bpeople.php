@@ -25,6 +25,7 @@
                     <div class="">上數上限：<?php echo $data[0]['numberUpper']; ?></div>
                     <div class="" id="changeNumber"></div>
                     <div class="">可否攜伴：<?php echo $data[0]['Atogether']; ?></div>
+                    <div class="">活動網址：https://leb-firefly0329.c9users.io/Activity/front_con/FsignUpUrl/<?php echo $data[0]['url']; ?></div>
                 </div>
                 <div class="w-50 float-l">
                     <div class="">其他內容：<br><?php echo $data[0]['content']; ?></div>

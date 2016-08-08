@@ -1,6 +1,7 @@
 <?php
 date_default_timezone_set('Asia/Taipei');
 $time = date("Y-m-d H:i:s");
+echo "您剛才所新增的活動網址:" . $data[1];
 ?>
 
 <html>
@@ -29,7 +30,7 @@ $time = date("Y-m-d H:i:s");
                     <th>是否可攜伴</th>
                     <th></th>
                 </tr>
-                <?php foreach($data as $data2){ ?>
+                <?php foreach($data[0] as $data2){ ?>
                 <tr>
                     <td style="color: orange;"><?php if($time < $data2['startTime']){echo "尚未到期";}else if($time > $data2['endTime']){echo "已過期";} ?></td>
                     <td><?php echo $data2['Aname']; ?></td>

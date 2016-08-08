@@ -39,7 +39,7 @@ class signUp_model{
                             ':Sname' => $Sname);
         $result = $pdo->selectOnce($grammer, $paramArray);
         
-        $pdo->closeConnection();
+        // $pdo->closeConnection();
         return $result;
     }
     //修改某活動某個員工的報名狀況.攜伴人數

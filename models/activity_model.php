@@ -18,23 +18,39 @@ class activity_model{
         $paramArray = array(':Aid' => $Aid);
         $result = $pdo->selectOnce($grammer, $paramArray);
         
-        $pdo->closeConnection();
+        // $pdo->closeConnection();
+        return $result;
+    }
+    //抓單筆活動(url)
+    function getOnceActivityUrl($url){
+        $pdo = new dbPDO;
+
+        $grammer = "SELECT * FROM  `activity` WHERE `url` = :url";
+        $paramArray = array(':url' => $url);
+        $result = $pdo->selectOnce($grammer, $paramArray);
+        
+        // $pdo->closeConnection();
         return $result;
     }
     //新增活動
     function setActivity($Aname,$startTime,$endTime,$numberUpper,$together,$content){
         $pdo = new dbPDO;
 
-        $grammer = "INSERT INTO `activity`(`Aname`, `startTime`, `endTime`, `numberUpper`, `Atogether`, `content`,`url`) 
-        VALUES (:Aname, :startTime, :endTime, :numberUpper, :together, :content, SUBSTRING( MD5( RAND() ) FROM 1 FOR 10 ) )";
+        $grammer = "INSERT INTO `activity`(`Aname`, `startTime`, `endTime`,`number`, `numberUpper`, `Atogether`, `content`,`url`) 
+        VALUES (:Aname, :startTime, :endTime, :numberUpper, :numberUpper, :together, :content, SUBSTRING( MD5( RAND() ) FROM 1 FOR 10 ) )";
         $paramArray = array(':Aname' => $Aname,
                             ':startTime' => $startTime,
                             ':endTime' => $endTime,
                             ':numberUpper' => $numberUpper,
                             ':together' => $together,
                             ':content' => $content);
-        $result = $pdo->change($grammer, $paramArray);
+        $Aid = $pdo->update($grammer, $paramArray);
+        $Aid = $pdo->lastInsertId();
+        $grammer = "SELECT `url` FROM  `activity` WHERE `Aid` = :Aid";
+        $paramArray = array(':Aid' => $Aid);
+        $result = $pdo->selectOnce($grammer, $paramArray);
         
+        // $pdo->closeConnection();
         return $result;
     }
     
@@ -46,7 +62,7 @@ class activity_model{
         $paramArray = array(':Aid' => $Aid);
         $result = $pdo->selectOnce($grammer, $paramArray);
         
-        $pdo->closeConnection();
+        // $pdo->closeConnection();
         return $result;
     }
     //抓(單筆)參加人數，並且updata參加人數(row lock)
@@ -82,7 +98,7 @@ class activity_model{
             $msg = $err->getMessage();
             
         }
-        $pdo->closeConnection();
+        // $pdo->closeConnection();
         return $msg;
         
 
@@ -98,7 +114,6 @@ class activity_model{
                             ':Aid' => $Aid);
         $result = $pdo->change($grammer, $paramArray);
         
-        // $pdo->linkConnection()->commit();
         return $result;
     }
 }

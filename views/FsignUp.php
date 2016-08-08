@@ -1,5 +1,5 @@
 <?php
-
+// echo $data[0]['Aid'];
 ?>
 
 <html>
@@ -48,7 +48,7 @@
                     </div>
                     <?php endif ?>
                     <div class="w-100">
-                        <input type="hidden" name="Aid" value="<?php echo $data[2]; ?>">
+                        <input type="hidden" name="Aid" value="<?php echo $data[0]['Aid']; ?>">
                         <input type="submit" value="活動報名" name="signUpBTN"/>
                     </div>
                     

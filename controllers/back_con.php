@@ -2,10 +2,10 @@
 header("Content-Type:text/html; charset=utf-8");
 class back_con extends Controller{
     
-    function BactivityList(){
+    function BactivityList($message=""){
         $activityModel = $this->model("activity_model");
         $activity = $activityModel->getActivity();
-        $this->view("BactivityList",$activity);
+        $this->view("BactivityList",array($activity,$message));
     }
     function BsetupActivity(){
         $activityModel = $this->model("activity_model");
@@ -50,9 +50,11 @@ class back_con extends Controller{
         $mypModel = $this->model("activity_model");
         if(isset($_POST['newActivityBTN'])){
             // echo $_POST['together'];
-            $mypModel->setActivity($_POST['Aname'],$_POST['startTime'],$_POST['endTime']
+            $url = $mypModel->setActivity($_POST['Aname'],$_POST['startTime'],$_POST['endTime']
             ,$_POST['numberUpper'],$_POST['together'],$_POST['content']);
-            $this->BactivityList();
+            
+            $meaasge = "https://leb-firefly0329.c9users.io/Activity/front_con/FsignUpUrl/" . $url['url'];
+            $this->BactivityList($meaasge);
         }     
     }
     //==============AJAX即時更新人數(單筆活動報名人數)=================
