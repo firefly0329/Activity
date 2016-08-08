@@ -11,18 +11,15 @@ class dbPDO{
     function __destruct(){
         self::$connection = null;
     }
-    
-    // function linkConnection(){
-    //     return self::$connection;
-    // }
+    function lastInsertId(){
+        return self::$connection->lastInsertId();
+    }
+    function linkConnection(){
+        return self::$connection;
+    }
     // function closeConnection(){
     //     self::$connection = null;
     // }
-    function lastInsertId(){
-        return self::$connection->lastInsertId();
-        
-    }
-    
     function selectAll($grammer,$paramArray){
         $pdoLink = self::$connection;
         
@@ -50,15 +47,6 @@ class dbPDO{
 
         return $result;
     }
-    function update($grammer,$paramArray){
-        $pdoLink = self::$connection;
-        
-        $prepare = $pdoLink->prepare($grammer);
-        $result = $prepare->execute($paramArray);
-
-        return $result;
-    }
-
 }
 
 

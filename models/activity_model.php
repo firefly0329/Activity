@@ -44,7 +44,7 @@ class activity_model{
                             ':numberUpper' => $numberUpper,
                             ':together' => $together,
                             ':content' => $content);
-        $Aid = $pdo->update($grammer, $paramArray);
+        $Aid = $pdo->change($grammer, $paramArray);
         $Aid = $pdo->lastInsertId();
         $grammer = "SELECT `url` FROM  `activity` WHERE `Aid` = :Aid";
         $paramArray = array(':Aid' => $Aid);
